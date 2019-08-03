@@ -1,4 +1,4 @@
-import React from 'react'
+import React , { Component }  from 'react'
 import styles from './Homepage.module.css'
 import heartImage from '../../../assets/images/Vector.svg'
 import ButtonFull from '../../UI/Button/ButtonFull/ButtonFull'
@@ -11,25 +11,51 @@ import twitterImage from '../../../assets/images/twitter.svg'
 import instagramImage from '../../../assets/images/instagram.svg'
 import facebookImage from '../../../assets/images/facebook.svg'
 import Layout from "../../../Containers/Layout/Layout"
+import axios from "axios"
+import { NavLink } from 'react-router-dom'
+import { Element } from "react-scroll"
 
+class Homepage extends Component {
+	state = {
+			contactinfo: "",
+			message: ""
+	}
+	updateState = (e) => {
+		const { name , value } = e.target
+		this.setState({[name]: value})
+	}
+	submitMessage = async () => {
+		try{
+			await axios.post("/url/messages")
+			this.setState({
+				contactinfo: "",
+				message: ""
+			})
+		}
+		catch(error){
 
-
-const Homepage = () => {
-	return (
+		}
+	}
+	render () {
+		return (
 		<Layout>
 					<div className={styles.Homepage}>
 					<section className={styles.header}>
 					<div className={styles.headerContainer}>				
-					<h1>Living foundation <span className={styles.colored}>Orphange</span></h1>
+					<h1>Living Foundation <span className={styles.colored}>Orphange</span></h1>
 					<p className={styles.headerText}>
 					Empowering children to reach their full potential
 					</p>
-					<ButtonFull>Donate</ButtonFull>
-					<ButtonOutline>Visit</ButtonOutline>
+					<NavLink to="/donate">
+							<ButtonFull>Donate</ButtonFull>
+					</NavLink>
+					<NavLink to="/visit">
+							<ButtonOutline>Visit</ButtonOutline>
+					</NavLink>
 					</div>
 					<img src={image1} alt="Teddy Bear" className="img img1"/>
 					</section>
-					<section className={styles.AdditionalInfo}>
+						<section className={styles.AdditionalInfo} id="about" name="about">
 						<img src={image2} alt="" className="img2 img"/>
 						<div className={styles.headerContainer}>
 							<h1 className={[styles.sectionHeading]}>
@@ -58,11 +84,30 @@ const Homepage = () => {
 							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi praesentium voluptate ab aspernatur dignissimos consequatur iste corrupti quis!					</Card>	
 						</div>
 					</section>
-					<section className={styles.contact}>
-						<div className={styles.contactBox}>
-
+					<section className={styles.contact} id="Contact" name="Contact" >
+						<div className={styles.contactBox}>			
+							<h2 className="formHeading">
+								Contact Us
+							</h2>
+				<form className="formStlye">
+								<div className="formGroup">
+									<label htmlFor="">
+										Email Address or Phone Number
+									</label>
+									<input type="text" onChange={this.updateState} value={this.state.contactinfo} className="inputStyle" name="contactinfo"/>
+								</div>
+								<div className="formGroup">
+									<label htmlFor="">
+										Message
+									</label>
+									<textarea onChange={this.updateState} value={this.state.message} className="textareaStyle" name="message"/>
+								</div>
+								<button className="form-submit">
+									Contact Us
+								</button>
+							</form>
 						</div>
-						<img src={image3} alt="" className="img img-3"/>
+						<img src={image3}  alt="" className={styles.imageContact}/>
 						<p className={styles.LocationText}>
 							LFo is located at <span className={styles.darkify}> insert Location </span>
 					</p>
@@ -76,6 +121,8 @@ const Homepage = () => {
 			</div>
 		</Layout>
 			
-	)
+	)	
+	}
+	
 }
 export default Homepage

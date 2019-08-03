@@ -40,14 +40,17 @@ code {
 .formGroup{
   display: block;
   width: 100%;
-  padding: 10px 0;
+  padding: 8px 0;
   text-align: left;
 }
 .formGroup-half{
   display: inline-block;
-  width: 49%;
-  padding: 10px 0;
-  margin-right: 3px;
+  width: 45%;
+  padding: 8px 0;
+  margin-right: 10%;
+}
+.last{
+  margin: 0;
 }
 
 .formGroup label{
@@ -63,7 +66,7 @@ code {
   border: 1px solid #aaa;
   border-radius: 5px;
   outline: none;
-  color: #aaa;
+  color: #000;
 }
 
 .form-submit{
@@ -74,7 +77,24 @@ code {
   color: #fff;
   border: none;
   border-radius: 5px;
+  transition: all 0.3s ease;
 }
+
+.form-submit:hover{
+    background-color: orange;
+    cursor: pointer;
+}
+.textareaStyle{
+  width: 100%;
+  padding: 10px 15px;
+  height: 200px;
+  border: 1px solid #aaa;
+  outline: none;
+  border-radius: 5px;
+  color: #000;
+
+}
+
 
 @media (max-width: 625px){
   .formGroup-half{

@@ -25,11 +25,15 @@ import AdminAddVisit from "./Components/Pages/Admin/AddVisit/AddVisit";
 import AdminListVisit from "./Components/Pages/Admin/ListVisit/ListVisit";
 import AdminListDonation from "./Components/Pages/Admin/ListDonations/ListDonations";
 import AdminListMessages from "./Components/Pages/Admin/ListContactMessages/ListContactMessages";
+import AdminSendResponse from "./Components/Pages/Admin/Responses/Responses"
+import AddTimeLine from "./Components/admin/AddToTimeLine/AddToTimeLine"
+
+
 
 class App extends Component {
   render() {
     return (
-      <HashRouter className="entire-project">
+      <BrowserRouter className="entire-project">
         <div>
           <Switch>
             <Route exact path="/" component={Homepage} />
@@ -40,6 +44,7 @@ class App extends Component {
             <Route exact path="/admin/children" component={AdminListChildren} />
             <Route exact path="/admin/children/add" component={AdminAddChild} />
             <Route exact path="/admin/user/profile" component={ChildProfile} />
+            <Route exact path="/admin/child/AddTimeLine" component={AddTimeLine} />
             <Route exact path="/admin/login" component={AdminLogin} />
             <Route
               exact
@@ -59,9 +64,10 @@ class App extends Component {
               component={AdminListDonation}
             />
             <Route exact path="/admin/messages" component={AdminListMessages} />
+            <Route exact path="/admin/messages/respond" component={AdminSendResponse} />
           </Switch>
         </div>
-      </HashRouter>
+      </BrowserRouter>
     );
   }
 }

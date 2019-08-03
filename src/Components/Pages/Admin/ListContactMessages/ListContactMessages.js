@@ -17,6 +17,10 @@ class ListContactMessages extends Component {
         {
           email: "mail@mail.com",
           message: "Sit veniam consequat laboris est ad."
+        },
+         {
+          email: "mail@mail.com",
+          message: "Sit veniam consequat laboris est ad. Sit veniam consequat laboris est ad."
         }
       ]
     };
@@ -40,9 +44,11 @@ class ListContactMessages extends Component {
             <th scope="row">{item.email}</th>
             <td>{item.message}</td>
             <div class="btn-group" role="group" aria-label="Basic example">
-              <button type="button" class="btn btn-success m-2">
-                Reply
-              </button>
+              <NavLink to="/admin/messages/respond">
+                    <button type="button" class="btn btn-success m-2">
+                        Reply
+                    </button>
+              </NavLink>
               <button type="button" class="btn btn-danger m-2">
                 Delete
               </button>
